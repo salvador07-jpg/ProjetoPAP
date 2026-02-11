@@ -23,5 +23,5 @@
 		<footer>
 			<p>Projeto PAP</p>
 		</footer>
-	<main>
+	</main>
 <html>
