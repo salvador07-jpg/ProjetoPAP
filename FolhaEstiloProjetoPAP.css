@@ -34,7 +34,6 @@ header{
 
 .MainArticle{
         display: flex;
-        
         border-radius: 6px;
         border-style: solid;
         border-color: rgb(220, 220, 220);

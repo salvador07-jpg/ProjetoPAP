@@ -1,3 +1,37 @@
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])) {
+
+    $con = new Mysqli("localhost", "root", "", "pc_builder");
+
+    if ($con->connect_error) {
+        die("Erro na ligação à base de dados: " . $con->connect_error);
+    }
+
+    $stn = $con->prepare("INSERT INTO componentes 
+        (id, nome, tipo, marca, modelo, preco, loja, stock, imagem, descricao, socket_cpu, tipo_ram, slots_ram, tipo_pcie_principal) 
+        VALUES (0,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+
+    $stn->bind_param("sssssssssssss",
+        $_POST["nome"], 
+        $_POST["tipo"], 
+        $_POST["marca"], 
+        $_POST["modelo"], 
+        $_POST["preco"],
+        $_POST["loja"], 
+        $_POST["stock"],
+        $_POST["imagem"], 
+        $_POST["descricao"], 
+        $_POST["socket_cpu"], 
+        $_POST["tipo_ram"], 
+        $_POST["slots_ram"], 
+        $_POST["tipo_pcie_principal"]
+    );
+
+    $stn->execute();
+    $stn->close();
+    $con->close();
+}
+?>
 <!DOCTYPE html>
 <html lang = "pt">
 	<head>
@@ -90,10 +124,14 @@
 				</ul>
 			</nav>
 			<article class = "MainArticle">
-				<article class = "ArticleContent">
-					<div class = "ComponentList">
 
-					</div>
+				<article class = "ArticleContent">
+					<!--<article class = "ComponentList">
+					</article>-->
+					<table>
+					
+				
+					</table>
 				</article>
 
 				<div class = "BD-Options">
@@ -114,7 +152,9 @@
 							<img style = "width: 85px; height: 85px;" src = "imagens/delete_componente.png">							
 						</button>
 					</div>
+
 				</div>
+
 			</article>
 		</div>
 		<footer>
@@ -123,30 +163,3 @@
 	</main>
 	<script src = "ScriptsProjeto.js"></script>
 </html>
-<?php
-	$con = new Mysqli("localhost", "root", "", "pc_builder");
-	if($con->connect_error != 0){
-		echo "Ocorreu um erro de ligação à base de dados; " . $con->connect_error;
-		exit;
-	}
-	$stn = $con->prepare("INSERT INTO componentes VALUES (0,?,?,?,?,?,?,?,?,?,?,?,?,?)");
-	$stn -> bind_param("sssssssssssss",
-		$_POST["nome"], 
-		$_POST["tipo"], 
-		$_POST["marca"], 
-		$_POST["modelo"], 
-		$_POST["preco"],
-		$_POST["loja"], 
-		$_POST["stock"],
-		$_POST["imagem"], 
-		$_POST["descricao"], 
-		$_POST["socket_cpu"], 
-		$_POST["tipo_ram"], 
-		$_POST["slots_ram"], 
-		$_POST["tipo_pcie_principal"]
-	);
-
-	$stn ->execute();
-	$stn ->close();
-	$con ->close();
-?>
