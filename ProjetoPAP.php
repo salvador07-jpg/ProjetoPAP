@@ -1,5 +1,5 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])) {
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])){
 
     $con = new Mysqli("localhost", "root", "", "pc_builder");
 
@@ -126,19 +126,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])) {
 			<article class = "MainArticle">
 
 				<article class = "ArticleContent">
-					<!--<article class = "ComponentList">
-					</article>-->
-					<table>
-					
-				
-					</table>
+					<div class = "ComponentList">
+
+					</div>
 				</article>
 
 				<div class = "BD-Options">
 
 					<div class = "BtAddStyle">
 						<button id = "BtAddComponentJS" type = "Submit" class = "BtAddComponent">
-							<img style = "width: 85px; height: 85px;" src = "imagens/add_componente.png">							</button>
+							<img style = "width: 85px; height: 85px;" src = "imagens/add_componente.png">							
+						</button>
 					</div>
 
 					<div class = "BtChangeStyle">
@@ -152,9 +150,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])) {
 							<img style = "width: 85px; height: 85px;" src = "imagens/delete_componente.png">							
 						</button>
 					</div>
-
 				</div>
-
 			</article>
 		</div>
 		<footer>

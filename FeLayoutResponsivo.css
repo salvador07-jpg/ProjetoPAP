@@ -45,6 +45,12 @@
                 height: 100%;
         }
 
+        .ComponentList{
+                height: 85%;                        
+                min-width: 0%;
+                width: 100%;
+        }
+
         .BtAddComponent, .BtChangeComponent, .BtDeleteComponent{
                 border-radius: 28px;
                 border-width: 5px;

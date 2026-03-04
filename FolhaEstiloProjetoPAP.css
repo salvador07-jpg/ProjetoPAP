@@ -34,6 +34,8 @@ header{
 
 .MainArticle{
         display: flex;
+        flex-direction: column;
+
         border-radius: 6px;
         border-style: solid;
         border-color: rgb(220, 220, 220);
@@ -47,21 +49,28 @@ header{
 
 .ArticleContent{
         display: flex;
-        background-color: rgb(163, 39, 39);
-
+        
+        padding-top: 35px;
+        padding-bottom: 20px;
         
         justify-content: center;
         width: 100%;
-        height: 200px;
+        height: 70%;
+        
 }
 
 .ComponentList{
         display: flex;
+        border-radius: 12px;
+        border-style: solid;
+        border-color: rgb(241, 241, 241);
+        border-width: 1.8px;
 
-        background-color: rgb(163, 39, 39);
+        background-color: rgb(250, 250, 250);
 
-        height: 400px;
-        width: 500px;
+        height: 95%;
+        min-width: 620px;
+        width: 65%;
 }
 
 
