@@ -1,36 +1,36 @@
 <?php
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])){
+	if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])){
 
-    $con = new Mysqli("localhost", "root", "", "pc_builder");
+		$con = new Mysqli("localhost", "root", "", "pc_builder");
 
-    if ($con->connect_error) {
-        die("Erro na ligação à base de dados: " . $con->connect_error);
-    }
+		if ($con->connect_error) {
+			die("Erro na ligação à base de dados: " . $con->connect_error);
+		}
 
-    $stn = $con->prepare("INSERT INTO componentes 
-        (id, nome, tipo, marca, modelo, preco, loja, stock, imagem, descricao, socket_cpu, tipo_ram, slots_ram, tipo_pcie_principal) 
-        VALUES (0,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+		$stn = $con->prepare("INSERT INTO componentes 
+			(id, nome, tipo, marca, modelo, preco, loja, stock, imagem, descricao, socket_cpu, tipo_ram, slots_ram, tipo_pcie_principal) 
+			VALUES (0,?,?,?,?,?,?,?,?,?,?,?,?,?)");
 
-    $stn->bind_param("sssssssssssss",
-        $_POST["nome"], 
-        $_POST["tipo"], 
-        $_POST["marca"], 
-        $_POST["modelo"], 
-        $_POST["preco"],
-        $_POST["loja"], 
-        $_POST["stock"],
-        $_POST["imagem"], 
-        $_POST["descricao"], 
-        $_POST["socket_cpu"], 
-        $_POST["tipo_ram"], 
-        $_POST["slots_ram"], 
-        $_POST["tipo_pcie_principal"]
-    );
+		$stn->bind_param("sssssssssssss",
+			$_POST["nome"],
+			$_POST["tipo"],
+			$_POST["marca"],
+			$_POST["modelo"],
+			$_POST["preco"],
+			$_POST["loja"],
+			$_POST["stock"],
+			$_POST["imagem"],
+			$_POST["descricao"],
+			$_POST["socket_cpu"],
+			$_POST["tipo_ram"],
+			$_POST["slots_ram"],
+			$_POST["tipo_pcie_principal"]
+		);
 
-    $stn->execute();
-    $stn->close();
-    $con->close();
-}
+		$stn->execute();
+		$stn->close();
+		$con->close();
+	}
 ?>
 <!DOCTYPE html>
 <html lang = "pt">
@@ -124,15 +124,47 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["nome"])){
 				</ul>
 			</nav>
 			<article class = "MainArticle">
-
 				<article class = "ArticleContent">
+					<?php
+						$con = new Mysqli("localhost", "root", "", "pc_builder");
+						if ($con->connect_error) {
+							die("Erro na ligação à base de dados: " . $con->connect_error);
+						}
+						$sql = "SELECT id_componente, imagem, nome, tipo, marca, modelo, preco FROM componentes";
+						$result = $con->query($sql);
+					?>
 					<div class = "ComponentList">
-
+						<table class="ComponentTabela">
+        					<tr>
+								<th>Imagem</th>
+								<th>ID</th>
+								<th>Nome</th>
+								<th>Tipo</th>
+								<th>Marca</th>
+								<th>Modelo</th>
+								<th>Preço</th>
+							</tr>
+							<?php
+							if ($result && $result->num_rows > 0) {
+								while ($row = $result->fetch_assoc()){
+									echo "<tr>";
+									echo "<td><img src = '" . $row["imagem"] . "' width = '30' height = '30'></td>";									echo "<td>" . $row["id_componente"] . "</td>";
+									echo "<td>" . $row["nome"] . "</td>";
+									echo "<td>" . $row["tipo"] . "</td>";
+									echo "<td>" . $row["marca"] . "</td>";
+									echo "<td>" . $row["modelo"] . "</td>";
+									echo "<td>" . $row["preco"] . "</td>";
+									echo "</tr>";
+								}
+							} else {
+								echo "<tr><td> Sem componentes </td></tr>";
+							}
+							$con->close();
+							?>
+						</table>
 					</div>
 				</article>
-
 				<div class = "BD-Options">
-
 					<div class = "BtAddStyle">
 						<button id = "BtAddComponentJS" type = "Submit" class = "BtAddComponent">
 							<img style = "width: 85px; height: 85px;" src = "imagens/add_componente.png">							

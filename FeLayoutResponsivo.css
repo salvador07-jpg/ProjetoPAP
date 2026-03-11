@@ -40,12 +40,15 @@
                 top: 56px;
         }
 
-        article{
+        .MainArticle{
                 border-radius: 0px;
                 height: 100%;
         }
 
         .ComponentList{
+                border-radius: 0px;
+                padding: 0px;
+
                 height: 85%;                        
                 min-width: 0%;
                 width: 100%;
