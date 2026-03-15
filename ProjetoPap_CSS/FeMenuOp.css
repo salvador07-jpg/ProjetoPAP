@@ -1,0 +1,111 @@
+@charset "UTF-8";
+
+body{
+    margin: 0;
+    font-family: Arial;
+
+    background: #1e1e1e;
+    color: white;
+    overflow-x: hidden;
+}
+
+header{
+    display: flex;
+    transition: 0.08s ease;
+
+    align-items: center;
+    justify-content: center;
+
+    height: 220px;
+    background: #111;
+}
+
+.Logo{
+    display: flex;
+
+    align-items: center;
+    gap: 10px;
+}
+
+.Logo img{
+    height: 55px;
+    width: 55px;
+}
+
+main{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 115px;
+}
+
+.OpButtons{
+    display: grid;
+    transition: 0.08s ease;
+
+    grid-template-columns: 400px 400px 400px;
+    grid-auto-rows: 260px;
+    gap: 20px;
+}
+
+.BotaoGeral{
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    text-decoration: none;
+    font-size: 18px;
+
+    border-radius: 12px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    border-width: 1.8px;
+
+    transition: 0.2s;
+
+    cursor: pointer;
+
+    background: #2c2c2c;
+    color:  white;
+}
+
+.BotaoGeral:hover{
+    background: #3a3a3a;
+}
+
+.F1{
+    grid-column: span 3;
+}
+
+.F2{
+    grid-row: span 2;
+}
+
+@media screen and (max-width: 1400px){
+    .OpButtons{
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        width: 90%;
+    }
+
+}
+
+@media screen and (max-width: 900px){
+    .OpButtons{
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    }
+
+}
+
+@media screen and (max-width: 700px){
+    header{
+        height: 190px;
+    }
+
+    .OpButtons{
+        grid-template-columns: 1fr;
+    }
+
+}
