@@ -3,9 +3,7 @@
     <head>
         <meta charset = "UTF-8">
             <title> PcBuilder </title>
-            <link rel = "stylesheet" href = "..\ProjetoPap_CSS\FeMenuInicial.css">
-            <link rel = "stylesheet" href = "..\ProjetoPap_CSS\responsivo.css">
-
+            <link rel = "stylesheet" href = "..\ProjetoPap_CSS\FeMenuInicial.css">            
     </head>
     <body>
         <header>
@@ -30,7 +28,7 @@
                     </button>
                     <div class = "BtUserContent">
                         <button id = "BtLoginJS" class = "BtLogin"> Login </button>
-                        <button id = "BtSigInJS" class = "BtSignIn"> Sign in </button>
+                        <button id = "BtSigInJS" class = "BtSignIn"> Signin </button>
                     </div>
                 </div>
 

@@ -16,7 +16,7 @@ header{
     align-items: center;
     justify-content: center;
 
-    height: 220px;
+    height: 160px;
     background: #111;
 }
 
@@ -38,15 +38,15 @@ main{
     align-items: center;
     justify-content: center;
 
-    margin-top: 115px;
+    margin-top: 40px;
 }
 
 .OpButtons{
     display: grid;
     transition: 0.08s ease;
 
-    grid-template-columns: 400px 400px 400px;
-    grid-auto-rows: 260px;
+    grid-template-columns: 340px 340px 340px;
+    grid-auto-rows: 200px;
     gap: 20px;
 }
 
@@ -82,12 +82,42 @@ main{
 }
 
 .F2{
+    flex-direction: column;
     grid-row: span 2;
+
 }
 
 .TamanhoIconOp{
     height: 60px;
     width: 60px;
+}
+
+.BtUserContent{
+    padding: 30px;
+}
+
+.BtLogin, .BtSignIn{
+    border-radius: 8px;
+    border-style: solid;
+    border-color: rgb(99, 99, 99);
+    border-width: 1.2px;
+
+    background-color: #383838;
+    color: rgb(255, 255, 255);
+
+    font-size: 14px;
+    height: 40px;
+    width: 45%;
+
+    cursor: pointer;
+}
+
+.BtLogin:hover{
+    background-color: ragb(99, 99, 99);
+}
+
+.BtSignIn:hover{
+    background-color: rgb(99, 99, 99);
 }
 
 @media screen and (max-width: 1400px){
@@ -114,5 +144,4 @@ main{
     .OpButtons{
         grid-template-columns: 1fr;
     }
-
 }
